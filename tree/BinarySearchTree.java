@@ -11,9 +11,16 @@ package tree;
  */
 public class BinarySearchTree {
 
-    Node root;
-
-    public void insert(Node node, int value) {
+    private Node root;
+    
+    public void insert(int value){
+        root = insert(root, value);
+    }
+    public Node insert(Node node, int value) {
+        if(root==null){
+            root=new Node(value);
+            return root;
+        }
         if (value < node.value) {
             if (node.left != null) {
                 insert(node.left, value);
@@ -29,6 +36,7 @@ public class BinarySearchTree {
                 node.right = new Node(value);
             }
         }
+        return node;
     }
     
     public void traverseInOrder(Node node){
